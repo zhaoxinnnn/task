@@ -6,11 +6,20 @@ const openBrowserWebpackPlugin = require("open-browser-webpack-plugin");
 const config = {
     entry : [ './src/main.js'],
     output : {
-        path : path.resolve(__dirname, 'build'),
+        path : path.resolve(__dirname, 'dist'),
         filename : 'bundle.js'
     },
     module : {
         rules : [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                    }
+                    // other vue-loader options go here
+                }
+            },
             {
                 test : /\.js$/,
                 use : ['babel-loader'],

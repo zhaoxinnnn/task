@@ -1,17 +1,9 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import FastClick from 'fastclick'
+import App from './app.vue'
 
-if ('addEventListener' in document) {
-    document.addEventListener('DOMContentLoaded', function() {
-        FastClick.attach(document.body);
-    }, false);
-};
-
-var app = new Vue({
-    el : '#app',
-    data : {
-        message : 'Hello Vue'
-    }
-});
-
+Vue.config.debug = true; // 开启错误提示
+Vue.http.options.emulateHTTP = true;
+new Vue({
+  el: '#appIndex',
+  render: h => h(App)
+})
