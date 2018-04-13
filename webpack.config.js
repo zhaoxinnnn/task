@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const openBrowserWebpackPlugin = require("open-browser-webpack-plugin");
 
 const config = {
-    entry : [ './src/main.js'],
+    entry : [ 'babel-polyfill','./src/main.js'],
     output : {
         path : path.resolve(__dirname, 'dist'),
         filename : 'bundle.js'
@@ -28,6 +28,11 @@ const config = {
                 
             }
         ]
+    },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
     },
     plugins : [
         new HtmlWebpackPlugin({
