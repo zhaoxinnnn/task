@@ -12,6 +12,15 @@ const config = {
     module : {
         rules : [
             {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                    }
+                    // other vue-loader options go here
+                }
+            },
+            {
                 test : /\.js$/,
                 use : ['babel-loader'],
                 include : path.resolve(__dirname, "./src"),
