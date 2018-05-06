@@ -1,7 +1,10 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+import App from './components/app.vue'
+
+Vue.use(ElementUI);
+
 new Vue({
   el: '#appIndex',
-  data : {
-    mes : 'marry me'
-  }
+  render: h => h(App)
 })

@@ -14,6 +14,7 @@ app.use(async (ctx, next) => {
 // logger
 
 app.use(async (ctx, next) => {
+  console.log('???'+ctx.request.origin);
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
@@ -25,7 +26,12 @@ console.log(app);
 // response
 
 app.use(async ctx => {
-  ctx.body = 'Hello World';
+  if(ctx.request.path == '/'){
+    ctx.body = 'Hello World';
+  }else if(ctx.request.path == '/main'){
+    ctx.body = '<h1>Hello World</h1>'
+  }
+  
 });
 
 app.listen(3000);
