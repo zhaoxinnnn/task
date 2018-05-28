@@ -51,7 +51,7 @@
         </el-form>
       </div>
       <div v-show="true" class="login">
-        <el-form :model="ruleForm" :rules="rulesLogin" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-form :model="ruleForm" :rules="rulesLogin" ref="form" label-width="100px" class="demo-ruleForm">
           <el-form-item label="账号" prop="account">
             <el-input v-model="form.account"></el-input>
           </el-form-item>
@@ -78,8 +78,7 @@ export default {
         },
         rulesLogin: {
           account: [
-            { required: true, message: '请输入账号', trigger: 'blur' },
-            { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+            { required: true, message: '请输入账号', trigger: 'blur' }
           ],
           password: [
             { required: true, message: '请输入密码', trigger: 'blur' }
@@ -129,7 +128,9 @@ export default {
     },
     methods: {
       submitForm(formName) {
+        console.log(this.$refs[formName]);
         this.$refs[formName].validate((valid) => {
+          console.log(valid);
           if (valid) {
             console.log(this.ruleForm);
           } else {
